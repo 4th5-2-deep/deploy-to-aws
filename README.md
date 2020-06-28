@@ -221,6 +221,8 @@
 
 - 설정 파일 편집
 
+    - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
+
     ```bash
     $ sudo vi /etc/nginx/sites-enabled/default
     ```
