@@ -1,5 +1,28 @@
 # Deploy to AWS EC2 using Cloud9
 
+## Table of Contents
+
+* [1. Local (개인 컴퓨터)](##1-local-개인-컴퓨터)
+    * [1.1. settings.py 분리](#11-settingspy-분리)
+    * [1.2. python-decouple (.env)](#12-python-decouple-env)
+    * [1.3. Project 복제](#13-project-복제)
+    * [1.4. 새 GitHub Repo 생성 & Git Push](#14-새-github-repo-생성--git-push)
+* [2. AWS Dashboard](#2-aws-dashboard)
+    * [2.1. 회원가입](#21-회원가입)
+    * [2.2. Cloud9 인스턴스 생성 및 실행](#22-cloud9-인스턴스-생성-및-실행)
+    * [2.3. EC2 인스턴스 Port 열어주기](#23-ec2-인스턴스-port-열어주기)
+* [3. AWS Cloud9 IDE](#3-aws-cloud9-ide)
+    * [3.1. 환경 설정](#31-환경-설정)
+    * [3.2. Project 설정](#32-project-설정)
+    * [3.3. 웹 서버 설정 (Nginx)](#33-웹-서버-설정-nginx)
+    * [3.4. 앱 서버 설정 (uWSGI)](#34-앱-서버-설정-uwsgi)
+    * [3.5. 마무리](#35-마무리)
+* [4. 코드 업데이트 반영하기](#4-코드-업데이트-반영하기)
+    * [4.1. Commands](#41-commands)
+    * [4.2. 자동화 스크립트 만들기](#42-자동화-스크립트-만들기)
+
+---
+
 ## 1. Local (개인 컴퓨터)
 
 ### 1.1. settings.py 분리
@@ -101,7 +124,6 @@
 - GitHub Repo 생성
 - git init, commit, remote add, push
 
----
 
 ## 2. AWS Dashboard
 
@@ -117,7 +139,6 @@
         - 소스: `위치 무관`
     - 규칙 저장
 
----
 
 ## 3. AWS Cloud9 IDE
 
@@ -330,7 +351,6 @@
     $ sudo systemctl restart uwsgi
     ```
 
----
 
 ## 4. 코드 업데이트 반영하기
 
