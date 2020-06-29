@@ -43,7 +43,7 @@
     ```python
     from .base import *
 
-    SECRET_KEY = config('SECRET_KEY')
+    SECRET_KEY = '...'
 
     DEBUG = True
 
@@ -55,7 +55,7 @@
     ```python
     from .base import *
 
-    SECRET_KEY = config('SECRET_KEY')
+    SECRET_KEY = '...'
 
     DEBUG = True # 추후에 False로 변경 예정
 
@@ -83,7 +83,32 @@
 ### 1.2. python-decouple (.env)
 
 - decouple 설치 & .env 생성
+   
+   ```bash
+   pip install python-decouple
+   ```
+   
 - 숨겨야 하는 변수(값)들 숨기기
+
+   - `settings/dev.py`
+   
+      ```python
+      from decouple import config
+
+      # ...
+
+      SECRET_KEY = config('SECRET_KEY')
+      ```
+   
+   - `settings/prod.py`
+   
+      ```python
+      from decouple import config
+
+      # ...
+
+      SECRET_KEY = config('SECRET_KEY')
+      ```
 
 ### 1.3. Project 복제
 
