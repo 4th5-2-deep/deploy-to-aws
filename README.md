@@ -70,14 +70,14 @@
     - `.dev` 추가
 
     ```python
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'formclass.settings.dev')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{ProjectName}.settings.dev')
     ```
 
 - `settings/wsgi.py`
     - `.prod` 추가
 
     ```python
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'formclass.settings.prod')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{ProjectName}.settings.prod')
     ```
 
 ### 1.2. python-decouple (.env)
@@ -176,8 +176,8 @@
 - 가상환경 (virtualenv)
 
     ```bash
-    $ pyenv virtualenv formclass-venv
-    $ pyenv local formclass-venv
+    $ pyenv virtualenv {ProjectName}-venv
+    $ pyenv local {ProjectName}-venv
     ```
 
 - Run pip install
@@ -365,7 +365,7 @@
 
     $ pip install -r requirements.txt
 
-    $ export DJANGO_SETTINGS_MODULE='formclass.settings.prod'
+    $ export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
 
     $ python manage.py migrate
     $ python manage.py collectstatic
@@ -385,7 +385,7 @@
     echo '>>> Install Packages'
     pip install -r requirements.txt
 
-    export DJANGO_SETTINGS_MODULE='formclass.settings.prod'
+    export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
 
     echo '>>> Database Migrate'
     python manage.py migrate
