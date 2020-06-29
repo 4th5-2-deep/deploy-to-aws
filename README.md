@@ -90,17 +90,7 @@
    
 - 숨겨야 하는 변수(값)들 숨기기
 
-   - `settings/dev.py`
-   
-      ```python
-      from decouple import config
-
-      # ...
-
-      SECRET_KEY = config('SECRET_KEY')
-      ```
-   
-   - `settings/prod.py`
+   - `settings/dev.py` & `settings/prod.py`
    
       ```python
       from decouple import config
@@ -110,7 +100,7 @@
       SECRET_KEY = config('SECRET_KEY')
       ```
 
-### 1.3. Project 복제
+### 1.3. Dependencies 기록
 
 - `requirements.txt` 생성
 
@@ -118,10 +108,9 @@
     $ pip freeze > requirements.txt
     ```
 
+### 1.4. Git Init & Git Push (TIL 등 다른 git 폴더 내부에 있을 경우)
+
 - project 폴더 통째로 복제
-
-### 1.4. 새 GitHub Repo 생성 & Git Push
-
 - `venv` 제거 (`.git` 있으면 같이 제거)
 - `.gitignore` 생성
 
@@ -147,7 +136,34 @@
     ```
 
 - GitHub Repo 생성
-- git init, commit, remote add, push
+- git init, add, commit, remote add, push
+
+### 1.4.2 Git Push (별도의 git으로 관리되고 있는 경우)
+
+- `.gitignore` 생성 또는 기존 파일에 추가
+
+    ```bash
+    # Python.gitignore
+    # ...
+
+    # VS Code
+    .vscode
+
+    # Django Media
+    media/
+
+    # Django Static
+    staticfiles/
+
+    # tmp & log
+    tmp/
+    log/
+
+    # OS
+    Thumbs.db
+    ```
+
+- git add, commit, push
 
 
 ## 2. AWS Dashboard
@@ -155,6 +171,10 @@
 ### 2.1. 회원가입
 
 ### 2.2. Cloud9 인스턴스 생성 및 실행
+
+- Ubuntu 18.04
+- cost-saving setting
+   - Never
 
 ### 2.3. EC2 인스턴스 Port 열어주기
 
@@ -193,11 +213,15 @@
 
 - Clone from GitHub
 
+   - `{GitHub Repo URL}`: Project 코드가 있는 GitHub 레포지토리의 URL
+   - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
+
     ```bash
     $ git clone {GitHub Repo URL}
     $ cd {ProjectName}
     ```
 
+- Local에서 `.env` 파일 가져오기
 - 가상환경 (virtualenv)
 
     ```bash
@@ -212,6 +236,8 @@
     ```
 
 - Set setting module
+
+   - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
 
     ```bash
     $ export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
