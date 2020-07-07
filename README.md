@@ -207,6 +207,7 @@
 
     ```bash
     $ pyenv install 3.7.6
+    $ pyenv global 3.7.6
     ```
 
 ### 3.2. Project 설정
@@ -224,6 +225,8 @@
 - Local에서 `.env` 파일 가져오기
 - 가상환경 (virtualenv)
 
+    - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
+    
     ```bash
     $ pyenv virtualenv {ProjectName}-venv
     $ pyenv local {ProjectName}-venv
