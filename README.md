@@ -85,6 +85,7 @@
 - decouple 설치 & .env 생성
    
    ```bash
+   # [bash]
    pip install python-decouple
    ```
    
@@ -105,7 +106,8 @@
 - `requirements.txt` 생성
 
     ```bash
-    $ pip freeze > requirements.txt
+    # [bash]
+    pip freeze > requirements.txt
     ```
 
 ### 1.4. Git Init & Git Push (TIL 등 다른 git 폴더 내부에 있을 경우)
@@ -192,22 +194,24 @@
 - pyenv, pyenv-virtualenv
 
     ```bash
-    $ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    $ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-    $ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-    $ echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
-    $ exec "$SHELL"
+    # [bash]
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+    exec "$SHELL"
 
-    $ git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-    $ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-    $ exec "$SHELL"
+    git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+    exec "$SHELL"
     ```
 
 - python
 
     ```bash
-    $ pyenv install 3.7.6
-    $ pyenv global 3.7.6
+    # [bash]
+    pyenv install 3.7.6
+    pyenv global 3.7.6
     ```
 
 ### 3.2. Project 설정
@@ -218,8 +222,9 @@
    - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
 
     ```bash
-    $ git clone {GitHub Repo URL}
-    $ cd {ProjectName}
+    # [bash]
+    git clone {GitHub Repo URL}
+    cd {ProjectName}
     ```
 
 - Local에서 `.env` 파일 가져오기
@@ -228,14 +233,16 @@
     - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
     
     ```bash
-    $ pyenv virtualenv {ProjectName}-venv
-    $ pyenv local {ProjectName}-venv
+    # [bash]
+    pyenv virtualenv {ProjectName}-venv
+    pyenv local {ProjectName}-venv
     ```
 
 - Run pip install
 
     ```bash
-    $ pip install -r requirements.txt
+    # [bash]
+    pip install -r requirements.txt
     ```
 
 - Set setting module
@@ -243,19 +250,22 @@
    - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
 
     ```bash
-    $ export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
+    # [bash]
+    export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
     ```
 
 - Databse migrate
 
     ```bash
-    $ python manage.py migrate
+    # [bash]
+    python manage.py migrate
     ```
 
 - Collect staticfiles
 
     ```bash
-    $ python manage.py collectstatic
+    # [bash]
+    python manage.py collectstatic
     ```
 
 ### 3.3. 웹 서버 설정 (Nginx)
@@ -263,14 +273,16 @@
 - Install
 
     ```bash
-    $ sudo apt install -y nginx
+    # [bash]
+    sudo apt install -y nginx
     ```
 
 - 80번 포트를 쓰고 있는 다른 웹 서버(apache) 종료 & nginx 시작
 
     ```bash
-    $ sudo systemctl stop apache2
-    $ sudo systemctl start nginx
+    # [bash]
+    sudo systemctl stop apache2
+    sudo systemctl start nginx
     ```
 
 - 설정 파일 편집
@@ -278,7 +290,8 @@
     - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
 
     ```bash
-    $ sudo vi /etc/nginx/sites-enabled/default
+    # [bash]
+    sudo vi /etc/nginx/sites-enabled/default
     ```
 
     ```
@@ -297,7 +310,8 @@
 - 설정 오류 없는지 테스트
 
     ```bash
-    $ sudo nginx -t
+    # [bash]
+    sudo nginx -t
     ```
 
 ### 3.4. 앱 서버 설정 (uWSGI)
@@ -305,15 +319,17 @@
 - Install
 
     ```bash
-    $ pip install uwsgi
+    # [bash]
+    pip install uwsgi
     ```
 
 - 필요한 폴더들 생성
 
     ```bash
-    $ mkdir tmp
-    $ mkdir -p log/uwsgi
-    $ mkdir -p .config/uwsgi
+    # [bash]
+    mkdir tmp
+    mkdir -p log/uwsgi
+    mkdir -p .config/uwsgi
     ```
 
 - `.config/uwsgi/{ProjectName}.ini`
@@ -368,12 +384,14 @@
     - `{ProjectName}`: 본인 프로젝트의 이름(폴더명)
 
     ```bash
+    # [bash]
     sudo ln -s ~/{ProjectName}/.config/uwsgi/uwsgi.service /etc/systemd/system/uwsgi.service
     ```
 
 - daemon 등록
 
     ```bash
+    # [bash]
     # daemon reload
     sudo systemctl daemon-reload
 
@@ -403,8 +421,9 @@
 - 서버 재시작
 
     ```bash
-    $ sudo systemctl restart nginx
-    $ sudo systemctl restart uwsgi
+    # [bash]
+    sudo systemctl restart nginx
+    sudo systemctl restart uwsgi
     ```
 
 
@@ -415,17 +434,18 @@
 - Local 작업 내용을 배포된 서버에 반영하기 위한 commands
 
     ```bash
-    $ git pull
+    # [bash]
+    git pull
 
-    $ pip install -r requirements.txt
+    pip install -r requirements.txt
 
-    $ export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
+    export DJANGO_SETTINGS_MODULE='{ProjectName}.settings.prod'
 
-    $ python manage.py migrate
-    $ python manage.py collectstatic
+    python manage.py migrate
+    python manage.py collectstatic
 
-    $ sudo systemctl restart nginx
-    $ sudo systemctl restart uwsgi
+    sudo systemctl restart nginx
+    sudo systemctl restart uwsgi
     ```
 
 ### 4.2. 자동화 스크립트 만들기
